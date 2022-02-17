@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import GravityDemoSDK from '@alipay/gravity-demo-sdk/dist/gravityDemoSdk/sdk/sdk';
+import GravityDemoSDK from './GravitySdk';
 
 import { GravityCode } from '../GravityCode/GravityCode';
 
@@ -13,7 +13,7 @@ export function GravityPreview({ code, height, refresh }: { code: GravityCode | 
 
   console.log('GravityPreview', fixedCode);
 
-  return <GravityDemoSDK code={fixedCode} width="100%" height={height} src="https://gw.alipayobjects.com/as/g/Gravity/gravity/3.10.3/gravityDemoSdk/index.html" />;
+  return <GravityDemoSDK code={fixedCode} width="100%" height={height} src="https://gw.alipayobjects.com/as/g/Gravity/gravity/5.0.0-beta.10/gravityDemoSdk/index.html" />;
 }
 
 // 默认生成的代码不符合 gravity 的规则，需要处理下
@@ -91,6 +91,7 @@ ReactDOM.render(<Page/>, document.getElementById('root'));
     '/src/utils.js',
     '/src/i18n.js',
     '/src/global.css',
+    '/src/index.js',
 
     // layouts 暂时先不加载吧
     // '/src/layouts/BasicLayout/index.js',

@@ -36,10 +36,9 @@
     "install-node": "14.x"
   },
   "dependencies": {
-    "@alilc/lowcode-code-generator": "^1.0.0-beta.16",
+    "@alilc/lowcode-code-generator": "^1.0.0",
     "@alilc/lowcode-plugin-base-monaco-editor": "^1.0.0",
-    "@alilc/lowcode-types": "^1.0.0-beta.19",
-    "@alipay/gravity-demo-sdk": "^4.8.0",
+    "@alilc/lowcode-types": "^1.0.0",
     "@types/file-saver": "^2.0.4",
     "@types/js-base64": "^3.3.1",
     "@types/string-natural-compare": "^3.0.2",
@@ -50,13 +49,13 @@
     "tslib": "^2.3.1"
   },
   "peerDependencies": {
-    "@alilc/lowcode-engine": "1.x || 2.x"
+    "@alilc/lowcode-engine": "^1.0.0"
   },
   "devDependencies": {
     "@ali/ali-lowcode-materials": "^1.0.26",
-    "@alilc/lowcode-engine": "^1.0.0-beta.13",
-    "@alilc/lowcode-plugin-components-pane": "^1.0.0-beta.3",
-    "@alife/theme-lowcode-light": "^0.1.0",
+    "@alilc/lowcode-engine": "^1.0.0",
+    "@alilc/lowcode-plugin-components-pane": "^1.0.2",
+    "@alifd/theme-lowcode-light": "^0.2.1",
     "@alib/build-scripts": "^0.1.18",
     "@types/classnames": "^2.2.7",
     "@types/events": "^3.0.0",

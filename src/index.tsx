@@ -12,12 +12,8 @@ export type CodeGenPluginOptions = {
   disableCodeGenActionBtn?: boolean;
 };
 
-export default (ctx: ILowCodePluginContext, options?: CodeGenPluginOptions) => {
+const codeGeneratorPlugin = (ctx: ILowCodePluginContext, options?: CodeGenPluginOptions) => {
   return {
-    // 插件名，注册环境下唯一
-    name: 'codeGenerator',
-    // 依赖的插件（插件名数组）
-    dep: [],
     // 插件对外暴露的数据和方法
     exports() {
       return {
@@ -50,5 +46,11 @@ export default (ctx: ILowCodePluginContext, options?: CodeGenPluginOptions) => {
         throw e;
       }
     },
+    destroy() { },
   };
 };
+
+codeGeneratorPlugin.pluginName = 'codeGenerator';
+codeGeneratorPlugin.meta = { dependencies: [] };
+
+export default codeGeneratorPlugin;

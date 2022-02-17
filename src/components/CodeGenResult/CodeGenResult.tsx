@@ -136,7 +136,15 @@ function convertCodeGenResult(result: Result | null | undefined, schema: Project
       const filePath = `/src/${fileName}`;
       if (code.modules[filePath]) {
         foundEntry = true;
-        code.modules[filePath].entry = 1;
+        if (fileName === 'index.js'){
+          code.modules[filePath].entry = 1;
+        } else {
+          code.modules['/src/index.js'] = {
+            fpath: '/src/index.js',
+            entry: 1,
+            code: `import "./${fileName.replace(/\.\w+$/,'')}"`,
+          }
+        }
       }
     }
   });
@@ -148,50 +156,5 @@ function convertCodeGenResult(result: Result | null | undefined, schema: Project
   // 补充 schema 文件
   Object.assign(code.modules, schemaFiles);
 
-  return getDemoCode() || code;
-}
-
-export function getDemoCode(): GravityCode | null {
-  if (Math.random() < 2) {
-    return null;
-  }
-  return {
-    type: 'demo',
-    modules: {
-      '/src/index.js': {
-        fpath: '/src/index.js',
-        code: `import "./global.css";
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-import DemoPage from '@/pages/Demo';
-
-console.debug("Running app");
-
-const App = () => <DemoPage />;
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-`,
-        entry: 1,
-      },
-      '/src/pages/Demo.js': {
-        fpath: '/src/pages/Demo.js',
-        code: `import React from 'react';
-export default () => <div>Hello world!</div>;`,
-      },
-      '/package.json': {
-        fpath: '/package.json',
-        code: `{
-  "name": "demo",
-  "version": "1.0.0",
-  "dependencies": {
-    "react": "16.x",
-    "react-dom": "16.x" 
-  }
-}`,
-        packagejson: 1,
-      },
-    },
-  };
+  return code;
 }
