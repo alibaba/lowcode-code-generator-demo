@@ -1,0 +1,13 @@
+.code-gen-plugin-loading {
+  width: 100%;
+  margin: 2em auto;
+}
+
+.code-gen-plugin-result {
+  width: 100%;
+  .next-message-error {
+    .next-message-content {
+      white-space: pre-wrap;
+    }
+  }
+}

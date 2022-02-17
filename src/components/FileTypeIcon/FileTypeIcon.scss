@@ -1,0 +1,36 @@
+// source: https://at.alicdn.com/t/font_2997782_rtal7ux80t.css
+
+@font-face {
+  font-family: "file-types-iconfont"; /* Project id 2997782 */
+  src: url('//at.alicdn.com/t/font_2997782_rtal7ux80t.woff2?t=1638951976966') format('woff2'),
+       url('//at.alicdn.com/t/font_2997782_rtal7ux80t.woff?t=1638951976966') format('woff'),
+       url('//at.alicdn.com/t/font_2997782_rtal7ux80t.ttf?t=1638951976966') format('truetype');
+}
+
+.file-types-iconfont {
+  font-family: "file-types-iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.file-types-icon-folder:before {
+  content: "\e6e9";
+}
+
+.file-types-icon-text:before {
+  content: "\e6a7";
+}
+
+.file-types-icon-jsx:before {
+  content: "\e63b";
+}
+
+.file-types-icon-js:before {
+  content: "\e618";
+}
+
+.file-types-icon-json:before {
+  content: "\e642";
+}

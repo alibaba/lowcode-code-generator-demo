@@ -1,0 +1,261 @@
+{
+  "componentName": "Page",
+  "id": "node_dockcviv8fo1",
+  "props": {
+    "ref": "outterView",
+    "style": {
+      "height": "100%"
+    }
+  },
+  "fileName": "lowcode",
+  "dataSource": {
+    "list": []
+  },
+  "css": "body {\n  font-size: 24px;\n}\n\n.botton {\n  width: 100px;\n  color: #ff00ff\n}",
+  "lifeCycles": {
+    "componentDidMount": {
+      "type": "JSFunction",
+      "value": "function() {\n    console.log('did mount');\n  }"
+    },
+    "componentWillUnmount": {
+      "type": "JSFunction",
+      "value": "function() {\n    console.log('will umount');\n  }"
+    }
+  },
+  "methods": {
+    "testFunc": {
+      "type": "JSFunction",
+      "value": "function() {\n    console.log('test func');\n  }"
+    },
+    "onClick": {
+      "type": "JSFunction",
+      "value": "function() {\n    this.setState({\n      isShowDialog: true\n    })\n  }"
+    },
+    "closeDialog": {
+      "type": "JSFunction",
+      "value": "function() {\n    this.setState({\n      isShowDialog: false\n    })\n  }"
+    },
+    "handleDetailBtnClick": {
+      "type": "JSFunction",
+      "value": "function(){\n    this.setState({\n      isShowDialog: true\n    })\n\t}"
+    }
+  },
+  "state": {
+    "text": "outter",
+    "isShowDialog": false
+  },
+  "children": [
+    {
+      "componentName": "NextPage",
+      "id": "node_ockxetxwo91",
+      "props": {
+        "columns": 12,
+        "headerDivider": true,
+        "placeholderStyle": {
+          "gridRowEnd": "span 1",
+          "gridColumnEnd": "span 12"
+        },
+        "placeholder": "页面主体内容：拖拽Block布局组件到这里",
+        "header": {
+          "type": "JSSlot",
+          "title": "header"
+        },
+        "headerProps": {
+          "background": "surface"
+        },
+        "footer": {
+          "type": "JSSlot",
+          "title": "footer"
+        }
+      },
+      "title": "页面",
+      "children": [
+        {
+          "componentName": "NextBlock",
+          "id": "node_ockxetxwo94",
+          "props": {
+            "prefix": "next-",
+            "placeholderStyle": {
+              "height": "100%"
+            },
+            "noPadding": false,
+            "noBorder": false,
+            "background": "surface",
+            "layoutmode": "O",
+            "colSpan": 12,
+            "rowSpan": 1,
+            "childTotalColumns": 12
+          },
+          "title": "区块",
+          "children": [
+            {
+              "componentName": "NextBlockCell",
+              "id": "node_ockxetxwo95",
+              "props": {
+                "colSpan": 12,
+                "rowSpan": 1,
+                "isAutoContainer": true
+              },
+              "children": [
+                {
+                  "componentName": "Card",
+                  "id": "node_ockxetxwo91q",
+                  "props": {
+                    "title": "Hello",
+                    "extra": {
+                      "type": "JSSlot",
+                      "value": [
+                        {
+                          "componentName": "Button",
+                          "id": "node_ockxetxwo921",
+                          "props": {
+                            "prefix": "next-",
+                            "type": "primary",
+                            "size": "small",
+                            "htmlType": "button",
+                            "component": "button",
+                            "children": "详情",
+                            "icon": "arrow-right",
+                            "__events": {
+                              "eventDataList": [
+                                {
+                                  "type": "componentEvent",
+                                  "name": "onClick",
+                                  "relatedEventName": "handleDetailBtnClick"
+                                }
+                              ],
+                              "eventList": [
+                                {
+                                  "name": "onClick",
+                                  "description": "点击按钮的回调\n@param {Object} e Event Object",
+                                  "disabled": true
+                                },
+                                {
+                                  "name": "onMouseUp",
+                                  "disabled": false
+                                }
+                              ]
+                            },
+                            "onClick": {
+                              "type": "JSFunction",
+                              "value": "function(){this.handleDetailBtnClick.apply(this,Array.prototype.slice.call(arguments).concat([])) }"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "componentName": "NextText",
+                      "id": "node_ockxetxwo96",
+                      "props": {
+                        "type": "h5",
+                        "children": "Hello world!",
+                        "style": {
+                          "display": "block"
+                        }
+                      }
+                    },
+                    {
+                      "componentName": "NextText",
+                      "id": "node_ockxetxwo927",
+                      "props": {
+                        "type": "inherit",
+                        "children": "欢迎出码预览 -- 点击页面右上角的“出码”按钮即可出码并预览。\n注：左边的“预览”是基于 react-renderer 的预览，可以作为对比。",
+                        "style": {
+                          "display": "block",
+                          "fontSize": "14px",
+                          "lineHeight": "22px"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "componentName": "Dialog",
+      "id": "node_ockxetxwo925",
+      "props": {
+        "prefix": "next-",
+        "footerAlign": "right",
+        "title": "这里是详细介绍",
+        "footer": true,
+        "footerActions": ["ok", "cancel"],
+        "closeable": "esc,close",
+        "hasMask": true,
+        "align": "cc cc",
+        "minMargin": 40,
+        "isAutoContainer": true,
+        "visible": {
+          "type": "JSExpression",
+          "value": "this.state.isShowDialog"
+        },
+        "style": {
+          "width": "500px"
+        },
+        "closeMode": "close",
+        "__events": {
+          "eventDataList": [
+            {
+              "type": "componentEvent",
+              "name": "onOk",
+              "relatedEventName": "closeDialog"
+            },
+            {
+              "type": "componentEvent",
+              "name": "onCancel",
+              "relatedEventName": "closeDialog"
+            },
+            {
+              "type": "componentEvent",
+              "name": "onClose",
+              "relatedEventName": "closeDialog"
+            }
+          ],
+          "eventList": [
+            {
+              "name": "onOk",
+              "disabled": true
+            },
+            {
+              "name": "onCancel",
+              "disabled": true
+            },
+            {
+              "name": "onClose",
+              "disabled": true
+            }
+          ]
+        },
+        "onOk": {
+          "type": "JSFunction",
+          "value": "function(){this.closeDialog.apply(this,Array.prototype.slice.call(arguments).concat([])) }"
+        },
+        "onCancel": {
+          "type": "JSFunction",
+          "value": "function(){this.closeDialog.apply(this,Array.prototype.slice.call(arguments).concat([])) }"
+        },
+        "onClose": {
+          "type": "JSFunction",
+          "value": "function(){this.closeDialog.apply(this,Array.prototype.slice.call(arguments).concat([])) }"
+        }
+      },
+      "children": [
+        {
+          "componentName": "NextText",
+          "id": "node_ockxetxwo926",
+          "props": {
+            "type": "body2",
+            "children": "Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! "
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "componentName": "Page",
+  "id": "node_dockcviv8fo1",
+  "props": {
+    "ref": "outerView",
+    "style": {
+      "height": "100%"
+    }
+  },
+  "fileName": "/",
+  "dataSource": {
+    "list": []
+  },
+  "state": {
+    "text": "outer",
+    "isShowDialog": false
+  },
+  "css": "body {font-size: 12px;} .button{width:100px;color:#ff00ff}",
+  "lifeCycles": {
+    "componentDidMount": {
+      "type": "JSFunction",
+      "value": "function() {\n    console.log('did mount');\n  }"
+    },
+    "componentWillUnmount": {
+      "type": "JSFunction",
+      "value": "function() {\n    console.log('will unmount');\n  }"
+    }
+  },
+  "methods": {
+    "testFunc": {
+      "type": "JSFunction",
+      "value": "function() {\n    console.log('test func');\n  }"
+    },
+    "onClick": {
+      "type": "JSFunction",
+      "value": "function() {\n    this.setState({\n      isShowDialog: true\n    })\n  }"
+    },
+    "closeDialog": {
+      "type": "JSFunction",
+      "value": "function() {\n    this.setState({\n      isShowDialog: false\n    })\n  }"
+    }
+  },
+  "children": [
+    {
+      "componentName": "NextPage",
+      "title": "页面",
+      "props": {
+        "columns": 12,
+        "headerDivider": true,
+        "placeholderStyle": {
+          "gridRowEnd": "span 1",
+          "gridColumnEnd": "span 12"
+        },
+        "placeholder": "页面主体内容：拖拽Block布局组件到这里",
+        "header": {
+          "type": "JSSlot",
+          "title": "header",
+          "value": []
+        },
+        "headerProps": {
+          "background": "surface"
+        },
+        "footer": {
+          "type": "JSSlot",
+          "title": "footer",
+          "value": []
+        }
+      },
+      "children": [
+        {
+          "componentName": "NextBlock",
+          "title": "区块",
+          "props": {
+            "prefix": "next-",
+            "placeholderStyle": {
+              "height": "100%"
+            },
+            "noPadding": false,
+            "noBorder": false,
+            "background": "surface",
+            "layoutmode": "O",
+            "colSpan": 12,
+            "rowSpan": 1,
+            "childTotalColumns": 12
+          },
+          "children": [
+            {
+              "componentName": "NextBlockCell",
+              "props": {
+                "colSpan": 12,
+                "rowSpan": 1,
+                "isAutoContainer": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+.code-gen-sources-view {
+  height: 100%;
+  .sources-panes {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  .file-tree-pane {
+    width: 230px;
+    overflow-y: auto;
+    height: 100%;
+    border-right: 1px solid #e0e0e0;
+    .file-types-iconfont {
+      font-size: 12px;
+      margin-right: 4px;
+      margin-left: -10px;
+    }
+  }
+  .source-code-pane {
+    flex: 1;
+    overflow-y: auto;
+    height: 100%;
+  }
+}

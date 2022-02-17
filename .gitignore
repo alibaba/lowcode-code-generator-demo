@@ -1,0 +1,9 @@
+node_modules
+output
+build/
+dist/
+lib/
+es/
+*.log
+*~
+.vscode
