@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 
 import GravityDemoSDK from './GravitySdk';
+import { ForceUpdate } from './ForceUpdate';
 
 import { GravityCode } from '../GravityCode/GravityCode';
 
@@ -13,7 +14,16 @@ export function GravityPreview({ code, height, refresh }: { code: GravityCode | 
 
   console.log('GravityPreview', fixedCode);
 
-  return <GravityDemoSDK code={fixedCode} width="100%" height={height} src="https://gw.alipayobjects.com/as/g/Gravity/gravity/5.0.0-beta.10/gravityDemoSdk/index.html" />;
+  return (
+    <ForceUpdate watchKey={refresh}>
+      <GravityDemoSDK
+        code={fixedCode}
+        width="100%"
+        height={height}
+        src="https://gw.alipayobjects.com/as/g/Gravity/gravity/5.0.0-beta.10/gravityDemoSdk/index.html"
+      />
+    </ForceUpdate>
+  );
 }
 
 // 默认生成的代码不符合 gravity 的规则，需要处理下
