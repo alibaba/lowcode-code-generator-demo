@@ -2,10 +2,27 @@ import './index.scss';
 
 import { ILowCodePluginContext, init, plugins } from '@alilc/lowcode-engine';
 import ComponentsPane from '@alilc/lowcode-plugin-components-pane';
+import Inject, { injectAssets } from '@alilc/lowcode-plugin-inject';
 
 import CodeGenPlugin from '../';
 
+const preference = new Map();
+preference.set('DataSourcePane', {
+  importPlugins: [],
+  dataSourceTypes: [
+    {
+      type: 'fetch',
+    },
+    {
+      type: 'jsonp',
+    }
+  ]
+});
+
 (async function main() {
+
+  await plugins.register(Inject);
+
   // plugin API 见 https://yuque.antfin.com/ali-lowcode/docs/cdukce
   await plugins.register(
     Object.assign(
@@ -17,7 +34,7 @@ import CodeGenPlugin from '../';
             const assets = await import('./assets.json');
     
             // 设置物料描述
-            ctx.material.setAssets(assets as any);
+            ctx.material.setAssets(await injectAssets(assets));
     
             // 加载 schema
             const schema = await import('./schema.json');
@@ -66,6 +83,39 @@ import CodeGenPlugin from '../';
   // 注册出码插件
   await plugins.register(CodeGenPlugin);
 
+  // 设置内置 setter 和事件绑定、插件绑定面板
+  const setterRegistry = (ctx: ILowCodePluginContext) => {
+    const { setterMap, pluginMap } = (window as any).AliLowCodeEngineExt;
+    return {
+      name: 'ext-setters-registry',
+      async init() {
+        const { setters, skeleton } = ctx;
+        // 注册setterMap
+        setters.registerSetter(setterMap);
+        // 注册插件
+        // 注册事件绑定面板
+        skeleton.add({
+          area: 'centerArea',
+          type: 'Widget',
+          content: pluginMap.EventBindDialog,
+          name: 'eventBindDialog',
+          props: {},
+        });
+
+        // 注册变量绑定面板
+        skeleton.add({
+          area: 'centerArea',
+          type: 'Widget',
+          content: pluginMap.VariableBindDialog,
+          name: 'variableBindDialog',
+          props: {},
+        });
+      },
+    };
+  }
+  setterRegistry.pluginName = 'setterRegistry';
+  await plugins.register(setterRegistry);
+
   // 初始化设计器
   init(document.getElementById('lce-container')!, {
     // designMode: 'live',
@@ -74,6 +124,12 @@ import CodeGenPlugin from '../';
     enableCanvasLock: true,
     // 默认绑定变量
     supportVariableGlobally: true,
-  });
+    // simulatorUrl 在当 engine-core.js 同一个路径下时是不需要配置的！！！
+    // 这里因为用的是 unpkg，在不同 npm 包，engine-core.js 和 react-simulator-renderer.js 是不同路径
+    simulatorUrl: [
+      'https://alifd.alicdn.com/npm/@alilc/lowcode-react-simulator-renderer@beta/dist/css/react-simulator-renderer.css',
+      'https://alifd.alicdn.com/npm/@alilc/lowcode-react-simulator-renderer@beta/dist/js/react-simulator-renderer.js'
+    ]
+  }, preference);
 })();
 

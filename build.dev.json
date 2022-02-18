@@ -1,6 +1,6 @@
 {
   "entry": {
-    "index": "src/demo/index"
+    "index": "src/index"
   },
   "vendor": false,
   "devServer": {
@@ -12,8 +12,11 @@
     "react-dom": "var window.ReactDOM",
     "prop-types": "var window.PropTypes",
     "@alifd/next": "var window.Next",
+    "@ali/lowcode-engine": "var window.AliLowCodeEngine",
     "@alilc/lowcode-engine": "var window.AliLowCodeEngine",
-    "@alilc/lowcode-engine-ext": "var window.AliLowCodeEngineExt"
+    "@alilc/lowcode-engine-ext": "var window.AliLowCodeEngineExt",
+    "moment": "var window.moment",
+    "lodash": "var window._"
   },
   "plugins": [
     ["build-plugin-react-app"],
