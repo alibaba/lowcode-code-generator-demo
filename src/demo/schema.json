@@ -9,7 +9,21 @@
   },
   "fileName": "/",
   "dataSource": {
-    "list": []
+    "list": [
+      {
+        "type": "fetch",
+        "isInit": true,
+        "options": {
+          "params": {},
+          "method": "GET",
+          "isCors": true,
+          "timeout": 5000,
+          "headers": {},
+          "uri": "mock/info.json"
+        },
+        "id": "info"
+      }
+    ]
   },
   "state": {
     "text": {
@@ -55,12 +69,15 @@
   "children": [
     {
       "componentName": "NextPage",
-      "id": "node_ockzmdt0f027",
+      "id": "node_ockzs2vw431",
       "props": {
         "headerDivider": true,
         "minHeight": "100vh",
         "presetNav": true,
         "presetAside": true,
+        "footer": false,
+        "nav": false,
+        "aside": false,
         "placeholderStyle": {
           "gridRowEnd": "span 1",
           "gridColumnEnd": "span 12"
@@ -68,18 +85,109 @@
         "headerProps": {
           "background": "surface"
         },
-        "header": "",
+        "header": {
+          "type": "JSSlot",
+          "value": [
+            {
+              "componentName": "NextPageHeader",
+              "id": "node_ockzs2vw433",
+              "props": {},
+              "title": "页面头部",
+              "hidden": false,
+              "isLocked": false,
+              "condition": true,
+              "conditionGroup": "",
+              "children": [
+                {
+                  "componentName": "NextRowColContainer",
+                  "id": "node_ockzs2vw434",
+                  "props": {
+                    "rowGap": 20,
+                    "colGap": 20
+                  },
+                  "title": "行列容器",
+                  "hidden": false,
+                  "isLocked": false,
+                  "condition": true,
+                  "conditionGroup": "",
+                  "children": [
+                    {
+                      "componentName": "NextRow",
+                      "id": "node_ockzs2vw435",
+                      "props": {},
+                      "title": "行",
+                      "hidden": false,
+                      "isLocked": false,
+                      "condition": true,
+                      "conditionGroup": "",
+                      "children": [
+                        {
+                          "componentName": "NextCol",
+                          "id": "node_ockzs2vw436",
+                          "props": {
+                            "colSpan": 1
+                          },
+                          "title": "列",
+                          "hidden": false,
+                          "isLocked": false,
+                          "condition": true,
+                          "conditionGroup": "",
+                          "children": [
+                            {
+                              "componentName": "NextP",
+                              "id": "node_ockzvfoetv17",
+                              "props": {
+                                "wrap": false,
+                                "type": "body2",
+                                "verAlign": "middle",
+                                "textSpacing": true,
+                                "align": "left"
+                              },
+                              "docId": "dockzvfoetv",
+                              "title": "段落",
+                              "hidden": false,
+                              "isLocked": false,
+                              "condition": true,
+                              "conditionGroup": "",
+                              "children": [
+                                {
+                                  "componentName": "NextText",
+                                  "id": "node_ockzvfoetv18",
+                                  "props": {
+                                    "type": "h5",
+                                    "children": {
+                                      "type": "JSExpression",
+                                      "value": "this.state.text",
+                                      "mock": "标题标题"
+                                    },
+                                    "mark": false,
+                                    "code": false,
+                                    "delete": false,
+                                    "underline": false,
+                                    "strong": false
+                                  },
+                                  "docId": "dockzvfoetv",
+                                  "hidden": false,
+                                  "title": "",
+                                  "isLocked": false,
+                                  "condition": true,
+                                  "conditionGroup": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "title": "header"
+        },
         "isTab": false,
-        "footer": "",
         "contentAlignCenter": false,
-        "nav": "",
-        "navProps": {
-          "width": 200
-        },
-        "aside": "",
-        "asideProps": {
-          "width": 200
-        },
         "contentProps": {
           "style": {
             "background": "rgba(255,255,255,0)"
@@ -94,7 +202,7 @@
       "children": [
         {
           "componentName": "NextBlock",
-          "id": "node_ockzmdt0f02u",
+          "id": "node_ockzs2vw437",
           "props": {
             "placeholderStyle": {
               "height": "100%"
@@ -117,28 +225,16 @@
           "isLocked": false,
           "condition": true,
           "conditionGroup": "",
-          "loop": [],
-          "loopArgs": [null, null],
           "children": [
             {
               "componentName": "NextBlockCell",
-              "id": "node_ockzmdt0f02v",
+              "id": "node_ockzs2vw438",
               "props": {
                 "colSpan": 12,
                 "rowSpan": 1,
                 "mode": "procard",
                 "isAutoContainer": true,
-                "title": "区块标题",
-                "hasDivider": true,
-                "loading": false,
-                "bodyPadding": "",
-                "hasCollapse": false,
-                "text": true,
-                "visibleButtonCount": 3,
-                "operations": [],
-                "operationConfig": {
-                  "align": "center"
-                }
+                "title": "区块标题"
               },
               "hidden": false,
               "title": "",
@@ -148,7 +244,7 @@
               "children": [
                 {
                   "componentName": "NextRowColContainer",
-                  "id": "node_ockzmdt0f02w",
+                  "id": "node_ockzs2vw439",
                   "props": {
                     "rowGap": 20,
                     "colGap": 20
@@ -161,7 +257,7 @@
                   "children": [
                     {
                       "componentName": "NextRow",
-                      "id": "node_ockzmdt0f02x",
+                      "id": "node_ockzs2vw43a",
                       "props": {},
                       "title": "行",
                       "hidden": false,
@@ -171,7 +267,7 @@
                       "children": [
                         {
                           "componentName": "NextCol",
-                          "id": "node_ockzmdt0f02y",
+                          "id": "node_ockzs2vw43b",
                           "props": {
                             "colSpan": 1
                           },
@@ -179,28 +275,7 @@
                           "hidden": false,
                           "isLocked": false,
                           "condition": true,
-                          "conditionGroup": "",
-                          "children": [
-                            {
-                              "componentName": "NextP",
-                              "id": "node_ockzqxqjtc5f",
-                              "props": {
-                                "wrap": false,
-                                "type": "body2",
-                                "verAlign": "middle",
-                                "textSpacing": true,
-                                "align": "left"
-                              },
-                              "docId": "dockzqxqjtc",
-                              "title": "段落",
-                              "hidden": false,
-                              "isLocked": false,
-                              "condition": true,
-                              "conditionGroup": "",
-                              "loop": [],
-                              "loopArgs": [null, null]
-                            }
-                          ]
+                          "conditionGroup": ""
                         }
                       ]
                     }

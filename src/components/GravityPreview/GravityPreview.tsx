@@ -20,7 +20,6 @@ export function GravityPreview({ code, height, refresh }: { code: GravityCode | 
         code={fixedCode}
         width="100%"
         height={height}
-        src="https://gw.alipayobjects.com/as/g/Gravity/gravity/5.0.0-beta.10/gravityDemoSdk/index.html"
       />
     </ForceUpdate>
   );
@@ -79,14 +78,15 @@ ReactDOM.render(<Page/>, document.getElementById('root'));
 
   fixedCode.modules['/package.json'] = {
     ...fixedCode.modules['/package.json'],
-    code: `{
-  "name": "demo",
-  "version": "1.0.0",
-  "dependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
-  }
-}`,
+    code: JSON.stringify({
+      "name": "demo",
+      "version": "1.0.0",
+      "dependencies": {
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3",
+        ...JSON.parse(fixedCode.modules['/package.json'].code).dependencies,
+      }
+    }),
   };
 
   fixedCode.modules = pickKeys(fixedCode.modules, [
@@ -126,35 +126,32 @@ ReactDOM.render(<Page/>, document.getElementById('root'));
   fixedCode.modules['/src/global.css'] = {
     fpath: '/src/global.css',
     code: `
-@import "~@alifd/next/dist/next.css";
-
 body {
   -webkit-font-smoothing: antialiased;
 }
 `,
   };
 
-  //   fixedCode.modules['/src/layouts/BasicLayout/components/Logo/index.module.css'] = {
-  //     fpath: '/src/layouts/BasicLayout/components/Logo/index.module.css',
-  //     code: `.logo{
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   color: #333;
-  //   font-weight: bold;
-  //   font-size: 14px;
-  //   line-height: 22px;
-  // }
+  Object.assign(fixedCode.modules, {
+    "/src/index.html": {
+        "code": "<div id=\"root\"></div>",
+        "fpath": "/src/index.html"
+    },
+    '/src/index.less': {
+        fpath: '/src/index.less',
+        code: `
+@import "~@alifd/next/dist/next.css";
+@import '~@alifd/pro-layout/dist/AlifdProLayout.css';
+`,
+    },
+    "/src/html.js": {
+      "fpath": "/src/html.js",
+      "code": "function runScript(script){\n  const newScript = document.createElement('script');\n  newScript.innerHTML = script.innerHTML;\n  const src = script.getAttribute('src');\n  if (src) newScript.setAttribute('src', src);\n\n  document.head.appendChild(newScript);\n  document.head.removeChild(newScript);\n}\n\nfunction setHTMLWithScript(container, rawHTML){\n  container.innerHTML = rawHTML;\n  const scripts = container.querySelectorAll('script');\n  for (let script of scripts) {\n    runScript(script);\n  }\n} var html = window.BrowserFS.BFSRequire('fs').readFileSync('/~/src/index.html').toString();setHTMLWithScript(document.getElementById(\"riddleContainer\"), html);",
+      "entry": 1
+    },
+  });
 
-  // .logo:visited, .logo:link {
-  //   color: #333;
-  // }
-
-  // .logo img {
-  //   height: 24px;
-  //   margin-right: 10px;
-  // }`
-  //   };
+  fixedCode.type = 'riddle';
 
   return fixedCode;
 }
