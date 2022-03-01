@@ -6,7 +6,7 @@
 
 ## 使用方法
 
-1. 安装依赖 `npm install --save @alilc/lowcode-plugin-code-generator@2.x`
+1. 安装依赖 `npm install --save @alilc/lowcode-plugin-code-generator`
 2. 注册插件:
 
 ```ts
@@ -23,7 +23,7 @@ await plugins.register(CodeGenPlugin, { disableCodeGenActionBtn: true });
 
 然后运行你的低代码编辑器项目即可。
 
-参考：低代码编辑器的 Demo:  <https://code.aone.alibaba-inc.com/ali-lowcode/lowcode-editor-demo>
+参考：低代码编辑器的 Demo: <https://github.com/alibaba/lowcode-demo>
 
 ## 插件 API
 
@@ -47,6 +47,6 @@ console.log('出码结果:', codeGenResult); // 这里就是出码结果
 
 ## 共建
 
-欢迎参与共建，欢迎直接 fork 一份改改，补充您所需要的特性或修复 bug，然后提 MR 过来:
+欢迎参与共建，欢迎直接 fork 一份改改，补充您所需要的特性或修复 bug，然后提 PR 过来:
 
--- 代码仓库：<https://code.aone.alibaba-inc.com/ali-lowcode/code-generator-demo>
+-- 代码仓库：<https://github.com/alibaba/lowcode-code-generator-demo>

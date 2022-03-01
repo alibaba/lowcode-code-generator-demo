@@ -33,7 +33,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "install-node": "14.x"
+    "node": "14.x"
   },
   "dependencies": {
     "@alilc/lowcode-code-generator": "^1.0.0",
@@ -53,23 +53,22 @@
     "react": "16.x || 17.x"
   },
   "devDependencies": {
-    "@ali/ali-lowcode-materials": "^1.0.26",
     "@alib/build-scripts": "^0.1.18",
     "@alifd/theme-lowcode-light": "^0.2.1",
-    "@alilc/lowcode-engine": "beta",
+    "@alilc/lowcode-engine": "^1.0.0",
     "@alilc/lowcode-plugin-code-editor": "^1.0.1",
     "@alilc/lowcode-plugin-components-pane": "^1.0.2",
-    "@alilc/lowcode-plugin-datasource-pane": "^1.0.0-beta.2",
-    "@alilc/lowcode-plugin-inject": "beta",
+    "@alilc/lowcode-plugin-datasource-pane": "^1.0.0",
+    "@alilc/lowcode-plugin-inject": "^1.0.0",
     "@alilc/lowcode-plugin-manual": "^1.0.0",
     "@alilc/lowcode-plugin-schema": "^1.0.0",
     "@alilc/lowcode-plugin-simulator-select": "^1.0.0",
     "@alilc/lowcode-plugin-undo-redo": "^1.0.0",
     "@alilc/lowcode-plugin-zh-en": "^1.0.0",
-    "@alilc/lowcode-react-renderer": "beta",
+    "@alilc/lowcode-react-renderer": "^1.0.0",
     "@alilc/lowcode-setter-behavior": "^1.0.0",
     "@alilc/lowcode-setter-title": "^1.0.2",
-    "@alilc/lowcode-types": "beta",
+    "@alilc/lowcode-types": "^1.0.0",
     "@types/classnames": "^2.2.7",
     "@types/events": "^3.0.0",
     "@types/node": "^13.7.1",
