@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 
 // const GRAVITY_PREFIX = 'lowcodeGravityPreview';
-const GRAVITY_PREFIX = 'gravityDemoSdk';
+// const GRAVITY_PREFIX = 'gravityDemoSdk';
+const GRAVITY_PREFIX = 'gravityRiddleSdk';
 
 const defaultProps = {
-  src: '',
+  // src: "https://gw.alipayobjects.com/as/g/Gravity/gravity/5.0.0-beta.10/gravityDemoSdk/index.html"
+  src: 'https://gw.alipayobjects.com/as/g/Gravity/gravity/5.0.0-beta.10/gravityRiddleSdk/index.html',
   code: {},
   target: null,
   style: {
@@ -23,7 +25,7 @@ const defaultProps = {
   className: null,
   referrerPolicy: null,
   title: null,
-  allow: null,
+  allow: 'clipboard-read;clipboard-write;camera;microphone',
   id: null,
   'aria-labelledby': null,
   'aria-hidden': null,
