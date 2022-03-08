@@ -36,12 +36,13 @@
     "install-node": "14.x"
   },
   "dependencies": {
-    "@alilc/lowcode-code-generator": "^1.0.2-beta.1",
+    "@alilc/lowcode-code-generator": "^1.0.2",
     "@alilc/lowcode-plugin-base-monaco-editor": "^1.0.0",
     "@alilc/lowcode-types": "^1.0.0",
     "@types/file-saver": "^2.0.4",
     "@types/js-base64": "^3.3.1",
     "@types/string-natural-compare": "^3.0.2",
+    "codesandbox": "^2.2.3",
     "file-saver": "^2.0.5",
     "js-base64": "^3.6.1",
     "jszip": "^3.7.1",

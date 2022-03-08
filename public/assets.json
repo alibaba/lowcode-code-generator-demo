@@ -30,12 +30,12 @@
       "version": "1.0.1",
       "library": "AlilcLowcodeMaterials",
       "urls": [
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/dist/AlilcLowcodeMaterials.js",
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/dist/AlilcLowcodeMaterials.css"
+        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.2-beta.1/dist/AlilcLowcodeMaterials.js",
+        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.2-beta.1/dist/AlilcLowcodeMaterials.css"
       ],
       "editUrls": [
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/build/lowcode/view.js",
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/build/lowcode/view.css"
+        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.2-beta.1/build/lowcode/view.js",
+        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.2-beta.1/build/lowcode/view.css"
       ]
     },
     {
@@ -71,10 +71,10 @@
       "npm": {
         "package": "@alilc/lowcode-materials"
       },
-      "url": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/build/lowcode/meta.js",
+      "url": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.2-beta.1/build/lowcode/meta.js",
       "urls": {
-        "default": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/build/lowcode/meta.js",
-        "design": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/build/lowcode/meta.design.js"
+        "default": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.2-beta.1/build/lowcode/meta.js",
+        "design": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.2-beta.1/build/lowcode/meta.design.js"
       }
     },
     {
