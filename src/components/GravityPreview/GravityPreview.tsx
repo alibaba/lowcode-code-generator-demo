@@ -16,11 +16,7 @@ export function GravityPreview({ code, height, refresh }: { code: GravityCode | 
 
   return (
     <ForceUpdate watchKey={refresh}>
-      <GravityDemoSDK
-        code={fixedCode}
-        width="100%"
-        height={height}
-      />
+      <GravityDemoSDK code={fixedCode} width="100%" height={height} />
     </ForceUpdate>
   );
 }
@@ -66,26 +62,40 @@ function fixGravityCode(code: GravityCode | null, _unused: unknown): GravityCode
   fixedCode.modules['/src/app.js'] = {
     ...fixedCode.modules['/src/app.js'],
     code: `
+import './shims';
 import './global.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import Page from '${Object.keys(fixedModules).find((fpath) => fpath.startsWith('/src/pages/'))}';
 
 ReactDOM.render(<Page/>, document.getElementById('root'));
 `,
   };
 
+  // 一些垫片，用于解决一些不能被 gravity 解析的问题
+  // 1. @alilc/lowcode-materials 中有部分代码直接使用了全局变量 PropTypes...
+  fixedCode.modules['/src/shims.js'] = {
+    fpath: '/src/shims.js',
+    code: `
+// 一些垫片代码，用来解决直接在浏览器中预览的时候的问题
+import PropTypes from 'prop-types';
+
+window.PropTypes = PropTypes;
+`,
+  };
+
   fixedCode.modules['/package.json'] = {
     ...fixedCode.modules['/package.json'],
     code: JSON.stringify({
-      "name": "demo",
-      "version": "1.0.0",
-      "dependencies": {
-        "react": "^16.8.3",
-        "react-dom": "^16.8.3",
+      name: 'demo',
+      version: '1.0.0',
+      dependencies: {
+        react: '^16.8.3',
+        'react-dom': '^16.8.3',
         ...JSON.parse(fixedCode.modules['/package.json'].code).dependencies,
-      }
+      },
     }),
   };
 
@@ -102,6 +112,7 @@ ReactDOM.render(<Page/>, document.getElementById('root'));
     '/src/i18n.js',
     '/src/global.css',
     '/src/index.js',
+    '/src/shims.js',
 
     // layouts 暂时先不加载吧
     // '/src/layouts/BasicLayout/index.js',
@@ -133,21 +144,21 @@ body {
   };
 
   Object.assign(fixedCode.modules, {
-    "/src/index.html": {
-        "code": "<div id=\"root\"></div>",
-        "fpath": "/src/index.html"
+    '/src/index.html': {
+      code: '<div id="root"></div>',
+      fpath: '/src/index.html',
     },
     '/src/index.less': {
-        fpath: '/src/index.less',
-        code: `
+      fpath: '/src/index.less',
+      code: `
 @import "~@alifd/next/dist/next.css";
 @import '~@alifd/pro-layout/dist/AlifdProLayout.css';
 `,
     },
-    "/src/html.js": {
-      "fpath": "/src/html.js",
-      "code": "function runScript(script){\n  const newScript = document.createElement('script');\n  newScript.innerHTML = script.innerHTML;\n  const src = script.getAttribute('src');\n  if (src) newScript.setAttribute('src', src);\n\n  document.head.appendChild(newScript);\n  document.head.removeChild(newScript);\n}\n\nfunction setHTMLWithScript(container, rawHTML){\n  container.innerHTML = rawHTML;\n  const scripts = container.querySelectorAll('script');\n  for (let script of scripts) {\n    runScript(script);\n  }\n} var html = window.BrowserFS.BFSRequire('fs').readFileSync('/~/src/index.html').toString();setHTMLWithScript(document.getElementById(\"riddleContainer\"), html);",
-      "entry": 1
+    '/src/html.js': {
+      fpath: '/src/html.js',
+      code: "function runScript(script){\n  const newScript = document.createElement('script');\n  newScript.innerHTML = script.innerHTML;\n  const src = script.getAttribute('src');\n  if (src) newScript.setAttribute('src', src);\n\n  document.head.appendChild(newScript);\n  document.head.removeChild(newScript);\n}\n\nfunction setHTMLWithScript(container, rawHTML){\n  container.innerHTML = rawHTML;\n  const scripts = container.querySelectorAll('script');\n  for (let script of scripts) {\n    runScript(script);\n  }\n} var html = window.BrowserFS.BFSRequire('fs').readFileSync('/~/src/index.html').toString();setHTMLWithScript(document.getElementById(\"riddleContainer\"), html);",
+      entry: 1,
     },
   });
 
