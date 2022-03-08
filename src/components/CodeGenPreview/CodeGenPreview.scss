@@ -1,0 +1,16 @@
+.code-gen-preview-tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .next-tabs-bar {
+    flex-shrink: 0;
+  }
+
+  .next-tabs-content {
+    flex: 1;
+    .next-tabs-tabpane {
+      height: 100%;
+    }
+  }
+}
