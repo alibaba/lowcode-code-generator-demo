@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import * as CodeGenerator from '@alilc/lowcode-code-generator/standalone-loader';
 import type { ILowCodePluginContext } from '@alilc/lowcode-engine';
-import { ProjectSchema } from '@alilc/lowcode-types';
+import { ProjectSchema, TransformStage } from '@alilc/lowcode-types';
 import { Button, Drawer, Loading, Message } from '@alifd/next';
 
 import { CodeGenResult } from '../CodeGenResult';
@@ -26,7 +26,7 @@ export function CodeGenActionBtn({ ctx }: { ctx: ILowCodePluginContext }) {
       setState((prev) => ({ ...prev, loading: true, visible: true, hasError: false }));
 
       // 获取 schema，并修正
-      const originalSchema = await ctx.project.exportSchema();
+      const originalSchema = await ctx.project.exportSchema(TransformStage.Save);
       const schema = await fixSchema(originalSchema);
       console.log('got schema: ', schema);
 
