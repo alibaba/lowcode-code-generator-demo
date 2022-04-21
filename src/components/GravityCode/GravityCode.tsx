@@ -1,5 +1,5 @@
 export type GravityCode = {
-  type: 'demo';
+  type: string;
   modules: Record<
     string,
     {

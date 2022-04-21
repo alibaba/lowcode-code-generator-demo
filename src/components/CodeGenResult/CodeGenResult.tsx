@@ -9,17 +9,17 @@ import { Result } from '@alilc/lowcode-code-generator/standalone-loader';
 import { Collapse, Message } from '@alifd/next';
 
 import { GravityCode } from '../GravityCode';
-import { GravityPreview } from '../GravityPreview';
+import { CodeGenPreview } from '../CodeGenPreview';
 import { SourcesView } from '../SourcesView';
 import { ProjectSchema } from '@alilc/lowcode-types';
 
-export function CodeGenResult({ result, schema }: { result: Result | null | undefined; schema: ProjectSchema|null; originalSchema: ProjectSchema|null; }) {
+export function CodeGenResult({ result, schema }: { result: Result | null | undefined; schema: ProjectSchema | null; originalSchema: ProjectSchema | null }) {
   const [paneState, setPaneState] = useState({ expandedKeys: ['sources', 'preview'] });
   const [gravityCode, setGravityCode] = useState<GravityCode | null>(null);
   const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
-    setGravityCode(convertCodeGenResult(result,schema));
+    setGravityCode(convertCodeGenResult(result, schema));
   }, [result]);
 
   if (!result) {
@@ -89,7 +89,7 @@ export function CodeGenResult({ result, schema }: { result: Result | null | unde
           key="preview"
         >
           <div className="code-gen-result-gravity-demo" style={{ height: gravityDemoHeight }}>
-            <GravityPreview code={gravityCode} height={gravityDemoHeight} refresh={refresh} />
+            <CodeGenPreview code={gravityCode} height={gravityDemoHeight} refresh={refresh} />
           </div>
         </Collapse.Panel>
       </Collapse>
@@ -97,11 +97,11 @@ export function CodeGenResult({ result, schema }: { result: Result | null | unde
   );
 }
 
-function convertCodeGenResult(result: Result | null | undefined, schema: ProjectSchema|null): GravityCode {
+function convertCodeGenResult(result: Result | null | undefined, schema: ProjectSchema | null): GravityCode {
   const schemaFiles = {
     '/.project-schema.json': {
       fpath: '/.project-schema.json',
-      code: `${JSON.stringify(schema, null, 2)}\n`
+      code: `${JSON.stringify(schema, null, 2)}\n`,
     },
   };
 
@@ -136,14 +136,14 @@ function convertCodeGenResult(result: Result | null | undefined, schema: Project
       const filePath = `/src/${fileName}`;
       if (code.modules[filePath]) {
         foundEntry = true;
-        if (fileName === 'index.js'){
+        if (fileName === 'index.js') {
           code.modules[filePath].entry = 1;
         } else {
           code.modules['/src/index.js'] = {
             fpath: '/src/index.js',
             entry: 1,
-            code: `import "./${fileName.replace(/\.\w+$/,'')}"`,
-          }
+            code: `import "./${fileName.replace(/\.\w+$/, '')}"`,
+          };
         }
       }
     }
