@@ -1,6 +1,6 @@
 {
   "name": "@alilc/lowcode-plugin-code-generator",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "集团低代码引擎 - 浏览器出码插件",
   "main": "lib/index.js",
   "module": "es/index.js",
