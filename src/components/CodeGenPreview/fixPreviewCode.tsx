@@ -74,7 +74,7 @@ window.PropTypes = PropTypes;
       dependencies: {
         react: '^16.8.3',
         'react-dom': '^16.8.3',
-        ...JSON.parse(fixedCode.modules['/package.json'].code).dependencies,
+        ...JSON.parse(fixedCode.modules['/package.json']?.code || '{}')?.dependencies,
       },
     }),
   };
