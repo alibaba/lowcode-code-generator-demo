@@ -51,6 +51,18 @@ const codeGeneratorPlugin = (ctx: ILowCodePluginContext, options?: CodeGenPlugin
 };
 
 codeGeneratorPlugin.pluginName = 'codeGenerator';
-codeGeneratorPlugin.meta = { dependencies: [] };
+codeGeneratorPlugin.meta = {
+  dependencies: [],
+  preferenceDeclaration: {
+    title: 'codeGenerator 的参数定义',
+    properties: [
+      {
+        key: 'disableCodeGenActionBtn',
+        type: 'boolean',
+        description: '是否要禁用出码的动作按钮',
+      },
+    ],
+  },
+};
 
 export default codeGeneratorPlugin;
