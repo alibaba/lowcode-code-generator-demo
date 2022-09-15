@@ -22,7 +22,7 @@ export function CodeSandboxPreview({ code, height }: CodeGenPreviewProps) {
     if (code && code.modules) {
       const fixedCode = fixPreviewCode(code);
       Object.values(fixedCode.modules).forEach((file) => {
-        files[file.fpath.slice(1)] = {
+        files[file?.fpath?.slice(1)] = {
           isBinary: false,
           content: file.code,
         };
