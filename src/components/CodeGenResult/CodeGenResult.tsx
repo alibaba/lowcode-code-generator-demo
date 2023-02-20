@@ -36,7 +36,7 @@ export function CodeGenResult({ result, schema }: { result: Result | null | unde
       const zip = new JSZip();
 
       Object.values(gravityCode?.modules || {}).forEach((file) => {
-        zip.file(file.fpath, file.code);
+        zip.file(file.fpath.replace(/^\/+/, ''), file.code);
       });
 
       await zip.generateAsync({ type: 'blob' }).then((content) => {
