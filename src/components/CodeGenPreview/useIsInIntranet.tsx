@@ -29,7 +29,7 @@ export function useIsInIntranet() {
  */
 async function detectIsInIntranet() {
   try {
-    const res = await fetch('https://dev.g.alicdn.com/ali-lowcode/ali-lowcode-materials/1.1.0/schema.json');
+    const res = await fetch('https://g.alicdn.com/ali-lowcode/ali-lowcode-materials/1.1.0/schema.json');
     if (res.ok) {
       return true;
     }
